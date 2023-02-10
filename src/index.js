@@ -33,6 +33,7 @@ function handleFormSubmission(event) {
   const dollarAmmount = document.querySelector('#usDollar').value;
   document.querySelector('#usDollar').value = null;
   const exchangeCurrency = document.querySelector('#exchangeToCurrency').value;
+  document.querySelector('#exchangeToCurrency').value = null;
   exchangeDollars(exchangeCurrency, dollarAmmount);
 }
 
