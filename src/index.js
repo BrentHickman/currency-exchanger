@@ -1,5 +1,5 @@
 import ExchangeService from './exchange-service.js';
-
+import './css/styles.css'
 //Business Logic
 
 function exchangeDollars(exchangeCurrency, dollarAmmount) {
@@ -38,7 +38,8 @@ function printExchange(exchangedAmmount, exchangeRate, exchangeCurrency, dollarA
 //handle API error
 
 function printError(error) {
-  document.querySelector('#showExchange').innerText = `There was an error accessing the exchange data for ${error[2]}: ${error[0].status} ${error[0].statusText}: ${error[1].message}`;
+  document.querySelector('#showExchange').setAttribute("class", "error");
+  document.querySelector('#showExchange').innerText = `There was an error accessing the exchange data: ${error[0].status}: ${error[0].response}`;
 }
 
 //collect input

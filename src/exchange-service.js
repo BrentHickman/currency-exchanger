@@ -9,7 +9,7 @@ export default class ExchangeService {
         if (this.status === 200) {
           resolve([response, exchangeCurrency]);
         } else {
-          reject([this, response, exchangeCurrency]);
+          reject([this, response]);
         }
       });
       request.open("GET", url, true);

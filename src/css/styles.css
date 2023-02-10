@@ -1,0 +1,9 @@
+body {
+  background-color: bisque;
+}
+
+.error {
+  max-width: 50%;
+  color: red;
+  font-style: italic;
+}
