@@ -16,12 +16,15 @@ function exchangeDollars(exchangeCurrency, dollarAmmount) {
 function printExchange(exchangedAmmount, exchangeRate, exchangeCurrency, dollarAmmount) {
   let exchangeRateMessage = document.createElement('p');
   let exchangeResult = document.createElement('p');
-
-  exchangeRateMessage.innerText = `The current exchange rate for ${exchangeCurrency} is USD x ${exchangeRate}.`
-  document.querySelector('#showExchange').append(exchangeRateMessage);
-
-  exchangeResult.innerText = `$${dollarAmmount} USD exchanges to ${exchangedAmmount} ${exchangeCurrency}`;
-  document.querySelector('#showExchange').append(exchangeResult);
+  if (isNaN(exchangeRate )) {
+    exchangeRateMessage.innerText = `Could not find exchange rate for ${exchangeCurrency}. Please check Currency Code.`
+    document.querySelector('#showExchange').append(exchangeRateMessage);
+  } else {
+    exchangeRateMessage.innerText = `The current exchange rate for ${exchangeCurrency} is USD x ${exchangeRate}.`
+    document.querySelector('#showExchange').append(exchangeRateMessage);
+    exchangeResult.innerText = `$${dollarAmmount} USD exchanges to ${exchangedAmmount} ${exchangeCurrency}`;
+    document.querySelector('#showExchange').append(exchangeResult);
+  }
 }
 
 function printError(error) {
