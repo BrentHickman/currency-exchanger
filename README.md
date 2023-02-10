@@ -1,17 +1,18 @@
-# (Application Name)
+# Currency Exchanger
 
-#### (Brief Description of Application)
+#### Check the exchange value of the US Dollar
 
-#### By (Your Name Here)
+#### By Brent Hickman
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* Javascript
+* CSS
+* HTML
+* ExchangeRate-API
+* Webpack
 
-## Description
+## User inputs a US Dollar ammount and will get that value in another chosen currency based on current exchange rates.
 
 ## Setup/Installation Requirements
 
