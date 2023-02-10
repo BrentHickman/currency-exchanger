@@ -1,5 +1,5 @@
 import ExchangeService from './exchange-service.js';
-import './css/styles.css'
+import './css/styles.css';
 //Business Logic
 
 function exchangeDollars(exchangeCurrency, dollarAmmount) {
@@ -22,9 +22,11 @@ function printExchange(exchangedAmmount, exchangeRate, exchangeCurrency, dollarA
   let exchangeResult = document.createElement('p');
   if (isNaN(exchangeRate)) {
     exchangeRateMessage.innerText = `Could not find exchange rate for ${exchangeCurrency}. Please check Currency Code.`;
+    document.querySelector('#showExchange').setAttribute("class", "error");
     document.querySelector('#showExchange').append(exchangeRateMessage);
   } else if (isNaN(dollarAmmount)) {
     exchangeResult.innerText = `${dollarAmmount} is not a number. Please try again.`;
+    document.querySelector('#showExchange').setAttribute("class", "error");
     document.querySelector('#showExchange').append(exchangeResult);
   }
   else {
@@ -46,6 +48,8 @@ function printError(error) {
 
 function handleFormSubmission(event) {
   event.preventDefault();
+  document.querySelector('#showExchange').innerText = null;
+  document.querySelector('#showExchange').removeAttribute("class");
   const dollarAmmount = document.querySelector('#usDollar').value;
   document.querySelector('#usDollar').value = null;
   const currencyCodeInput = document.querySelector('#exchangeToCurrency').value;

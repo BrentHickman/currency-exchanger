@@ -4,6 +4,7 @@ body {
 
 .error {
   max-width: 50%;
+  background-color: pink;
   color: red;
   font-style: italic;
 }
