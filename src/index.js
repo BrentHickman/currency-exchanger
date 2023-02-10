@@ -1,5 +1,7 @@
 import ExchangeService from './exchange-service.js';
 
+//Business Logic
+
 function exchangeDollars(exchangeCurrency, dollarAmmount) {
   let exchangePromise = ExchangeService.exchangeDollars(exchangeCurrency);
   exchangePromise.then(function(exchangeDataArray) {
@@ -11,25 +13,35 @@ function exchangeDollars(exchangeCurrency, dollarAmmount) {
   });
 }
 
-//UI
+//UI logic
+
+//print message
 
 function printExchange(exchangedAmmount, exchangeRate, exchangeCurrency, dollarAmmount) {
   let exchangeRateMessage = document.createElement('p');
   let exchangeResult = document.createElement('p');
-  if (isNaN(exchangeRate )) {
-    exchangeRateMessage.innerText = `Could not find exchange rate for ${exchangeCurrency}. Please check Currency Code.`
+  if (isNaN(exchangeRate)) {
+    exchangeRateMessage.innerText = `Could not find exchange rate for ${exchangeCurrency}. Please check Currency Code.`;
     document.querySelector('#showExchange').append(exchangeRateMessage);
-  } else {
-    exchangeRateMessage.innerText = `The current exchange rate for ${exchangeCurrency} is USD x ${exchangeRate}.`
+  } else if (isNaN(dollarAmmount)) {
+    exchangeResult.innerText = `${dollarAmmount} is not a number. Please try again.`;
+    document.querySelector('#showExchange').append(exchangeResult);
+  }
+  else {
+    exchangeRateMessage.innerText = `The current exchange rate for ${exchangeCurrency} is USD x ${exchangeRate}.`;
     document.querySelector('#showExchange').append(exchangeRateMessage);
     exchangeResult.innerText = `$${dollarAmmount} USD exchanges to ${exchangedAmmount} ${exchangeCurrency}`;
     document.querySelector('#showExchange').append(exchangeResult);
   }
 }
 
+//handle API error
+
 function printError(error) {
   document.querySelector('#showExchange').innerText = `There was an error accessing the exchange data for ${error[2]}: ${error[0].status} ${error[0].statusText}: ${error[1].message}`;
 }
+
+//collect input
 
 function handleFormSubmission(event) {
   event.preventDefault();
