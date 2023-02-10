@@ -1,8 +1,19 @@
-<!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-  <title></title>
+  <title>Currency Exchanger</title>
 </head>
 <body>
+  <div class="container">
+    <h1>See current exchange rates!</h1>
+    <p>Enter a US dollar ammount and which currency you would like to exchange it to:</p>
+    <form>
+      <label for="usDollar">USD$</label>
+      <input id="usDollar" type="text" name="usDollar">
+      <label for="exchangeToCurrency">Exchange to:</label>
+      <input id="exchangeToCurrency" type="text" name="exchangeToCurrency">
+      <button type="submit" class="btn-success" id="exchange">Exchange!</button>
+    </form>
+    <p id="showExchange"></p>
+  </div>
 </body>
 </html>
