@@ -5,9 +5,9 @@ import ExchangeService from './exchange-service.js';
 function exchangeDollars(exchangeCurrency, dollarAmmount) {
   let exchangePromise = ExchangeService.exchangeDollars(exchangeCurrency);
   exchangePromise.then(function(exchangeDataArray) {
-    let exchangeRate = exchangeDataArray.conversion_rates[exchangeCurrency];
+    let exchangeRate = exchangeDataArray[0].conversion_rates[exchangeCurrency];
     let exchangedAmmount = (dollarAmmount * exchangeRate).toFixed(2);
-      printExchange(exchangedAmmount, exchangeRate, exchangeCurrency, dollarAmmount);
+    printExchange(exchangedAmmount, exchangeRate, exchangeCurrency, dollarAmmount);
   }, function(errorArray) {
     printError(errorArray);
   });
@@ -47,7 +47,8 @@ function handleFormSubmission(event) {
   event.preventDefault();
   const dollarAmmount = document.querySelector('#usDollar').value;
   document.querySelector('#usDollar').value = null;
-  const exchangeCurrency = document.querySelector('#exchangeToCurrency').value;
+  const currencyCodeInput = document.querySelector('#exchangeToCurrency').value;
+  const exchangeCurrency = currencyCodeInput.toUpperCase();
   document.querySelector('#exchangeToCurrency').value = null;
   exchangeDollars(exchangeCurrency, dollarAmmount);
 }
